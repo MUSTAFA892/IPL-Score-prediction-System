@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Score Predictor | Result</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"> <!-- Added Roboto font for result -->
+    <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: url('{{ url_for('static', filename='iplimage.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .container-heading {
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .prediction-area {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center content vertically */
+            flex-direction: column; /* Stack items vertically */
+            padding: 20px;
+            min-height: 80vh; /* Ensure it takes up enough vertical space */
+        }
+        .results {
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%; /* Control width for better responsiveness */
+            max-width: 600px; /* Set a max-width for larger screens */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .prediction-result {
+            font-family: 'Roboto', sans-serif; /* Use Roboto for result */
+            color: #ff5722;
+            font-size: 24px; /* Increase font size */
+            font-weight: 700;
+            margin-top: 10px;
+        }
+        @media (max-width: 768px) {
+            .results {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Website Title -->
+    <div class="container">
+        <h2 class='container-heading'><span class="heading_second">IPL Score Prediction System</span></h2>
+    </div>
+
+    <!-- Prediction Area -->
+    <div class="prediction-area">
+        <!-- Result -->
+        <div class="results">
+            {% if prediction_result %}
+                <div class="prediction-result">
+                    {{ prediction_result }}
+                </div>
+            {% else %}
+                <p class="prediction-result">Please enter the details to get a prediction.</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
